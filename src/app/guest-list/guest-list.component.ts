@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Guest} from '../models/guest.model';
+import {HttpService} from '../http.service';
 
 @Component({
   selector: 'app-guest-list',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestListComponent implements OnInit {
 
-  constructor() { }
+  public guests:Guest[];
 
+  constructor(private httpService: HttpService) { }
+
+  public getGuests = () => {
+    let route: string = 'https://localhost:44343/api/Guests';
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.guests = result as Guest[];
+      },
+        (error) => {
+          console.error(error);
+        });
+  }
   ngOnInit(): void {
+    this.getGuests();
   }
 
 }

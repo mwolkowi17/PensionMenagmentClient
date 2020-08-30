@@ -1,1 +1,48 @@
-<p>room-list works!</p>
+<h1> Room List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Room Number
+            </th>
+
+            <th>
+                Occupied
+            </th>
+            <th>
+                for smokers
+            </th>
+            <th>
+                room type
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr *ngFor="let room of rooms">
+
+            <td>
+                {{room.number}}
+            </td>
+
+            <td>
+                {{room.is_ocuppied}}
+            </td>
+            <td>
+                {{room.smoke}}
+            </td>
+            <td>
+                {{room.nubmerbeds}}
+            </td>
+            
+            
+        </tr>
+        
+    </tbody>
+
+</table>
+
+

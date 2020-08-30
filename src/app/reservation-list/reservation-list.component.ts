@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from '../http.service';
+import {Reservation} from '../models/reservation.model';
 
 @Component({
   selector: 'app-reservation-list',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationListComponent implements OnInit {
 
-  constructor() { }
+  public reservations: Reservation[];
+
+  constructor(private httpService: HttpService) { }
+
+  public getReservations = () => {
+    let route: string = 'https://localhost:44343/api/Rooms';
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.reservations = result as Reservation[];
+      },
+        (error) => {
+          console.error(error);
+        });
+  }
 
   ngOnInit(): void {
+    this.getReservations();
   }
 
 }
