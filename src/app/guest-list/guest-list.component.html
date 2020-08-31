@@ -27,6 +27,9 @@
                             <td>{{guest.name}}</td>
                             <td>{{guest.surname}}</td>
                             <td>{{guest.member_since}}</td>
+                            <td >
+                            <a class="Button" (click)="onClear(guest.guestID)">Delete</a>    
+                            </td>
                         </tr>
                     
                 </tbody>

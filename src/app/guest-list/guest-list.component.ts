@@ -59,6 +59,20 @@ export class GuestListComponent implements OnInit {
     this.addGuest();
     
   }
+  onClear(id: number ){
+    
+    let route: string = 'https://localhost:44343/api/Guests/'+id.toString();
+   
+    this.httpService.removeGuest(route)
+    .subscribe((result) => {
+      // alert("udało się all")
+      this.getGuests();
+     },
+       (error) => {
+         console.error(error);
+       });
+    this.getGuests();
+  }
 
   ngOnInit(): void {
     this.getGuests();

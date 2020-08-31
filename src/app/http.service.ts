@@ -16,4 +16,8 @@ export class HttpService {
   public addGuest = (route: string, body: Guest) => {
     return this.httpService.post(route, body);
   }
+
+  public removeGuest=(route: string) => {
+    return this.httpService.delete(route)
+  }
 }
