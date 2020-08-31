@@ -26,7 +26,7 @@
                             <td>{{guest.guestID}}</td>
                             <td>{{guest.name}}</td>
                             <td>{{guest.surname}}</td>
-                            <td>{{guest.member_since}}</td>
+                            <td>{{guest.member_since.substr(0, 4)}}</td>
                             <td >
                             <a class="Button" (click)="onClear(guest.guestID)">Delete</a>    
                             </td>
