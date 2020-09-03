@@ -17,7 +17,11 @@ export class GuestListComponent implements OnInit {
       GuestID:0,
       Name:"",
       Surname:"",
-      Member_since:"2020-08-31T07:44:35.076Z"
+      Member_since:"2020-08-31T07:44:35.076Z",
+      City:"",
+      Adress:"",
+      EmailAdress:"",
+      TelephoneNumber:""
     };
   }
 
@@ -56,6 +60,10 @@ export class GuestListComponent implements OnInit {
     console.log(form.value.telephonenumberuser);
     this.guestToAdd.Name=form.value.nameuser;
     this.guestToAdd.Surname=form.value.surnameuser;
+    this.guestToAdd.City=form.value.cityuser;
+    this.guestToAdd.Adress=form.value.adressuser;
+    this.guestToAdd.EmailAdress=form.value.emailuser;
+    this.guestToAdd.TelephoneNumber=form.value.telephonenumberuser;
     this.addGuest();
     
   }

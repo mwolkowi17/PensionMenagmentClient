@@ -8,6 +8,9 @@ export interface Room{
         Is_ocuppied: boolean
         Smoke : boolean
         Nubmerbeds : RoomType
+        Is_cleaned: boolean
+        Price: number
+        
 }
 enum RoomType
 {

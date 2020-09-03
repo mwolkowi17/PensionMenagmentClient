@@ -3,4 +3,10 @@ export interface Guest{
     Name: string;
     Surname: string;
     Member_since: string;
+    City: string;
+    Adress: string;
+    EmailAdress: string;
+    TelephoneNumber: string;
+
+    
 }
