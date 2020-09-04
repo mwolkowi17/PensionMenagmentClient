@@ -3,8 +3,8 @@ import {Room} from './room.model'
 
 export interface Reservation{
     ReservationID: number;
-    Check_in: Date;
-    Check_out: Date;
+    Check_in: string;
+    Check_out: string;
     Guest: Guest;
     Room: Room;
 }

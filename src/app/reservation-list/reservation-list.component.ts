@@ -11,10 +11,12 @@ export class ReservationListComponent implements OnInit {
 
   public reservations: Reservation[];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService) {
+    
+   }
 
   public getReservations = () => {
-    let route: string = 'https://localhost:44343/api/Rooms';
+    let route: string = 'https://localhost:44343/api/Reservations';
     this.httpService.getData(route)
       .subscribe((result) => {
         this.reservations = result as Reservation[];
@@ -22,10 +24,12 @@ export class ReservationListComponent implements OnInit {
         (error) => {
           console.error(error);
         });
+       
   }
 
   ngOnInit(): void {
     this.getReservations();
+    
   }
 
 }

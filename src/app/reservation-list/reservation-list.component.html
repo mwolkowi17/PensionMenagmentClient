@@ -1,1 +1,118 @@
-<p>reservation-list works!</p>
+<p>
+<h1>Reservation List</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+
+
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            check in
+                        </th>
+                        <th>
+                            check out
+                        </th>
+
+
+                       
+                        <!--<th>
+                     Breakfest
+                    </th>-->
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let reservation of reservations">
+                        <td>
+                            {{reservation.reservationID}}
+                        </td>
+                        <td>
+                            {{reservation.check_in.substr(0, 10)}}
+                        </td>
+                        <td>
+                            {{reservation.check_out.substr(0, 10)}}
+                        </td>
+
+                        <!--<td>
+                         @Html.DisplayFor(modelItem => item.BreakfestIncluded)
+                        </td>-->
+                        <!--<td>
+                                    <a>Details</a>
+                                </td>
+                                <td>
+                                    <a >Delete</a>
+                                </td>
+                            -->
+
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <!--Searching guest block-->
+
+            <div class="card" style="margin-bottom:20px">
+                <div class="card-body">
+                    <h5 class="card-title">Search GuestID</h5>
+
+                    <form asp-controller="ReservationList" asp-action="FindGuestIdB" autocomplete="off">
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Guest Surname</label>
+                            <input type="text" class="form-control" name="guestname">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+
+            <!--End of searching block-->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reservation Panel</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Add New Reservation</h6>
+                    <form asp-controller="ReservationList" asp-action="AddReservationC" autocomplete="off">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Room Type</label>
+                            <select class="form-control" name="type" id="exampleFormControlSelect1">
+                                <option value="0">single person</option>
+                                <option value="1">double person</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">GuestID</label>
+                            <input type="text" class="form-control" name="idguest">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Arrival Date</label>
+                            <input type="text" class="form-control" name="checkin">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Departure Date</label>
+                            <input type="text" class="form-control" name="checkout">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Breakfest</label>
+                            <select class="form-control" name="breakfestincluded" id="exampleFormControlSelect1">
+                                <option value="false">no breakfest</option>
+                                <option value="true">with breakfest</option>
+
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
