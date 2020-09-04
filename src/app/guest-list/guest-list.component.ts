@@ -79,6 +79,7 @@ export class GuestListComponent implements OnInit {
     this.detailsof=false;
     this.detailson=true;
     this.guestToDetails=this.guests[index]
+    
   }
 
   onBackToList(){
