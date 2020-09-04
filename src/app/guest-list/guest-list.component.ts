@@ -12,6 +12,10 @@ export class GuestListComponent implements OnInit {
 
   public guests:Guest[];
   public guestToAdd: Guest;
+  public detailsof: boolean;
+  public detailson: boolean;
+  public guestToDetails : Guest;
+
   constructor(private httpService: HttpService) { 
     this.guestToAdd={
       GuestID:0,
@@ -23,6 +27,9 @@ export class GuestListComponent implements OnInit {
       EmailAdress:"",
       TelephoneNumber:""
     };
+    this.detailsof=true;
+    this.detailson=false;
+    
   }
 
   public getGuests = () => {
@@ -67,6 +74,18 @@ export class GuestListComponent implements OnInit {
     this.addGuest();
     
   }
+  
+  onDetails(index:number){
+    this.detailsof=false;
+    this.detailson=true;
+    this.guestToDetails=this.guests[index]
+  }
+
+  onBackToList(){
+    this.detailsof=true;
+    this.detailson=false;
+  }
+
   onClear(id: number ){
     
     let route: string = 'https://localhost:44343/api/Guests/'+id.toString();

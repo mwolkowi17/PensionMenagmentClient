@@ -1,8 +1,8 @@
-<h1>Guest List</h1>
+<h1 *ngIf="detailsof">Guest List</h1>
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table" *ngIf="detailsof">
                 <thead>
                     <tr>
                         <th>
@@ -20,21 +20,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                   
-                    
-                        <tr *ngFor="let guest of guests">
-                            <td>{{guest.guestID}}</td>
-                            <td>{{guest.name}}</td>
-                            <td>{{guest.surname}}</td>
-                            <td>{{guest.member_since.substr(0, 4)}}</td>
-                            <td >
-                            <a class="Button" (click)="onClear(guest.guestID)">Delete</a>    
-                            </td>
-                        </tr>
-                    
+
+
+                    <tr *ngFor="let guest of guests; let i = index;">
+                        <td>{{guest.guestID}}</td>
+                        <td>{{guest.name}}</td>
+                        <td>{{guest.surname}}</td>
+                        <td>{{guest.member_since.substr(0, 4)}}</td>
+                        <td>
+                            <a class="Button" (click)="onDetails(i)">Details</a>
+                        </td>
+                        <td>
+                            <a class="Button" (click)="onClear(guest.guestID)">Delete</a>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
-           
+            <div *ngIf="detailson">
+                <h1>Details</h1>
+
+                <p><b>Name:</b> {{guestToDetails.name}}</p>
+                <p><b>Surname:</b> {{guestToDetails.surname}}</p>
+                <p><b>City:</b> {{guestToDetails.city}}</p>
+                <p><b>Adress:</b> {{guestToDetails.adress}}</p>
+                <p><b>Email:</b> {{guestToDetails.emailadress}}</p>
+                <p><b>Telephone:</b> {{guestToDetails.telephonnumber}}</p>
+                <p>
+                    <a class="Button" (click)="onBackToList()">Back to list</a>
+                </p>
+            </div>
         </div>
         <div class="col">
             <div class="card">
@@ -74,5 +89,5 @@
             </div>
         </div>
     </div>
-    
+
 </div>
