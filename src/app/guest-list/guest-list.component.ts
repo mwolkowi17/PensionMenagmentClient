@@ -40,9 +40,7 @@ export class GuestListComponent implements OnInit {
       },
         (error) => {
           console.error(error);
-        });
-
-   
+        });  
   }
 
   public addGuest = () => {

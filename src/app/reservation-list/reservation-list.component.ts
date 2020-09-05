@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../http.service';
 import {Reservation} from '../models/reservation.model';
+import {Guest} from '../models/guest.model';
+import {Room} from '../models/room.model';
 
 @Component({
   selector: 'app-reservation-list',
@@ -10,6 +12,8 @@ import {Reservation} from '../models/reservation.model';
 export class ReservationListComponent implements OnInit {
 
   public reservations: Reservation[];
+  public guests:Guest[];
+  public rooms: Room[];
 
   constructor(private httpService: HttpService) {
     
@@ -27,8 +31,31 @@ export class ReservationListComponent implements OnInit {
        
   }
 
+  public getGuests = () => {
+    let route: string = 'https://localhost:44343/api/Guests';
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.guests = result as Guest[];
+      },
+        (error) => {
+          console.error(error);
+        });  
+  }
+  public getRooms = () => {
+    let route: string = 'https://localhost:44343/api/Rooms';
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.rooms = result as Room[];
+      },
+        (error) => {
+          console.error(error);
+        });
+  }
+
   ngOnInit(): void {
     this.getReservations();
+    this.getGuests();
+    this.getRooms();
     
   }
 
