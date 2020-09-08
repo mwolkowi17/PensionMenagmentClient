@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Guest} from './models/guest.model'
+import { Reservation } from './models/reservation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class HttpService {
 
   public removeGuest=(route: string) => {
     return this.httpService.delete(route)
+  }
+
+  public addReservation = (route: string, body: Reservation) => {
+    return this.httpService.post(route, body)
   }
 }
