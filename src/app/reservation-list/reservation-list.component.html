@@ -82,11 +82,11 @@
                 <div class="card-body">
                     <h5 class="card-title">Reservation Panel</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Add New Reservation</h6>
-                    <form asp-controller="ReservationList" asp-action="AddReservationC" autocomplete="off">
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
 
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Room Type</label>
-                            <select class="form-control" name="type" id="exampleFormControlSelect1">
+                            <select class="form-control" name="type" ngModel id="exampleFormControlSelect1">
                                 <option value="0">single person</option>
                                 <option value="1">double person</option>
 
@@ -94,19 +94,19 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">GuestID</label>
-                            <input type="text" class="form-control" name="idguest">
+                            <input type="text" class="form-control" name="idguest" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Arrival Date</label>
-                            <input type="text" class="form-control" name="checkin">
+                            <input type="text" class="form-control" name="checkin" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Departure Date</label>
-                            <input type="text" class="form-control" name="checkout">
+                            <input type="text" class="form-control" name="checkout" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Breakfest</label>
-                            <select class="form-control" name="breakfestincluded" id="exampleFormControlSelect1">
+                            <select class="form-control" name="breakfestincluded" ngModel id="exampleFormControlSelect1">
                                 <option value="false">no breakfest</option>
                                 <option value="true">with breakfest</option>
 

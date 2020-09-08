@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import {HttpService} from '../http.service';
 import {Reservation} from '../models/reservation.model';
 import {Guest} from '../models/guest.model';
 import {Room} from '../models/room.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-list',
@@ -50,6 +51,15 @@ export class ReservationListComponent implements OnInit {
         (error) => {
           console.error(error);
         });
+  }
+
+  @ViewChild('f', { static: false }) carForm: NgForm;
+
+  onSubmit(form: NgForm) {
+    console.log(form.value.idguest);
+    console.log(form.value.type);
+    console.log(form.value.checkin);
+    console.log(form.value.checkout);
   }
 
   ngOnInit(): void {
