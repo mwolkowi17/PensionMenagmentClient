@@ -4,6 +4,7 @@ import {Reservation} from '../models/reservation.model';
 import {Guest} from '../models/guest.model';
 import {Room} from '../models/room.model';
 import { NgForm } from '@angular/forms';
+import { Params } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-list',
@@ -15,6 +16,14 @@ export class ReservationListComponent implements OnInit {
   public reservations: Reservation[];
   public guests:Guest[];
   public rooms: Room[];
+  public restype: number;
+  public residguest: number;
+  public rescheckin: string;
+  public rescheckout: string;
+  public resbreakfestincluded: boolean;
+  public newreservation: Reservation;
+  
+
 
   constructor(private httpService: HttpService) {
     
@@ -52,7 +61,28 @@ export class ReservationListComponent implements OnInit {
           console.error(error);
         });
   }
+  
+  public addReservation=()=>{
+    //let route: string = 'https://localhost:44343/api/Reservations/addreservation?type=1&idguest=2&checkin=2020-09-13&checkout=2020-09-14&breakfestincluded=true';
+    let route: string = 'https://localhost:44343/api/Reservations/addreservation?type='+this.restype+'&idguest='+this.residguest+'&checkin='+this.rescheckin+'&checkout='+this.rescheckout+'&breakfestincluded='+this.resbreakfestincluded;
+    let params: Params ={
+      type:this.restype,
+      idguest:this.restype,
+      checkin:this.rescheckin,
+      checkout:this.rescheckout,
+      breakfestincluded:this.resbreakfestincluded
 
+    }
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.newreservation = result as Reservation;
+        this.getReservations();
+      },
+        (error) => {
+          console.error(error);
+        });
+       
+  }
   @ViewChild('f', { static: false }) carForm: NgForm;
 
   onSubmit(form: NgForm) {
@@ -60,6 +90,14 @@ export class ReservationListComponent implements OnInit {
     console.log(form.value.type);
     console.log(form.value.checkin);
     console.log(form.value.checkout);
+    this.restype=form.value.type;
+    this.residguest=form.value.idguest;
+    this.rescheckin=form.value.checkin;
+    this.rescheckout=form.value.checkout;
+    this.resbreakfestincluded=form.value.breakfestincluded;
+    console.log("guest:"+this.residguest)
+    this.addReservation();
+    
   }
 
   ngOnInit(): void {

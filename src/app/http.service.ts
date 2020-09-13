@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Guest} from './models/guest.model'
 import { Reservation } from './models/reservation.model';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,10 @@ export class HttpService {
   public addReservation = (route: string, body: Reservation) => {
     return this.httpService.post(route, body)
   }
+
+  public getDataParams = (route: string, params: Params) => {
+    return this.httpService.get(route, params);
+  }
 }
+
+  
