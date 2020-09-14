@@ -46,16 +46,10 @@
                         <td>
                             {{reservation.guest.surname}}
                         </td>
-                        <!--<td>
-                         @Html.DisplayFor(modelItem => item.BreakfestIncluded)
-                        </td>-->
-                        <!--<td>
-                                    <a>Details</a>
-                                </td>
-                                <td>
-                                    <a >Delete</a>
-                                </td>
-                            -->
+                        <td>
+                            <a class="Button" (click)="onClear(reservation.reservationID)">Delete</a>
+                        </td>
+                        
 
 
 

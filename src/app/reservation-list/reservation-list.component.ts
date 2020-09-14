@@ -83,6 +83,21 @@ export class ReservationListComponent implements OnInit {
         });
        
   }
+
+  public onClear(id: number ){
+    
+    let route: string = 'https://localhost:44343/api/Reservations/'+id.toString();
+   
+    this.httpService.removeGuest(route)
+    .subscribe((result) => {
+      // alert("udało się all")
+      this.getReservations();
+     },
+       (error) => {
+         console.error(error);
+       });
+    this.getGuests();
+  }
   @ViewChild('f', { static: false }) carForm: NgForm;
 
   onSubmit(form: NgForm) {
