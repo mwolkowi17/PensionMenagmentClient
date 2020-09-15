@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table  class="table">
                 <thead>
                     <tr>
 
@@ -65,19 +65,57 @@
                 <div class="card-body">
                     <h5 class="card-title">Search GuestID</h5>
 
-                    <form asp-controller="ReservationList" asp-action="FindGuestIdB" autocomplete="off">
+                    <form (ngSubmit)="onSubmitSearch(g)" #g="ngForm" autocomplete="off">
 
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Guest Surname</label>
-                            <input type="text" class="form-control" name="guestname">
+                            <input type="text" class="form-control" name="guestname" ngModel>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
                 </div>
             </div>
+            <table *ngIf="searchedView" class="table">
+                <thead>
+                    <tr>
 
+
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            name
+                        </th>
+                        <th>
+                            surname
+                        </th>
+                                       
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let guest of searchedguests">
+                        <td>
+                            {{guest.guestID}}
+                        </td>
+                        <td>
+                            {{guest.name}}
+                        </td>
+                        <td>
+                            {{guest.surname}}
+                        </td>
+                       
+                        
+
+
+
+                    </tr>
+
+                </tbody>
+            </table>
             <!--End of searching block-->
             <div class="card">
                 <div class="card-body">
