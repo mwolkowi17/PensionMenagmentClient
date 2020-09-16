@@ -35,30 +35,30 @@
 
                     <tr *ngFor="let reservation of reservationHistoryItems">
                         <td>
-                           
+                            {{reservation.reservationHistoryID}}
                         </td>
                         <td>
-                            
+                            {{reservation.check_in_History.substr(0, 10)}}
                         </td>
                         <td>
-                            
+                            {{reservation.check_out_History.substr(0,10)}}
+                        </td>
+                        <td>
+                            {{reservation.guest.guestID}}
+                        </td>
+                        <td>
+                            {{reservation.guest.name}}
+                        </td>
+                        <td>
+                            {{reservation.guest.surname}}
+                        </td>
+                        <td>
+                            {{reservation.room.number}}
                         </td>
 
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
-                        <td>
-                            
-                        </td>
 
                     </tr>
-                    
+
                 </tbody>
             </table>
         </div>
