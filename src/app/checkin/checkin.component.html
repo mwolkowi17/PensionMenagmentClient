@@ -1,1 +1,88 @@
-<p>checkin works!</p>
+<h1>Check In</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3> Reservations for Today</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+
+
+                        <th>
+                        Reservation ID
+                        </th>
+
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Surname
+                        </th>
+                        <th>
+                            Room Nr
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                    <tr *ngFor="let reservation of reservations">
+                        <td>
+                            {{reservation.reservationID}}
+                        </td>
+
+
+                        
+                           
+                        <td>
+                            {{reservation.guest.name}}
+                        </td>
+                        <td>
+                            {{reservation.guest.surname}}
+                        </td>
+                      
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h3> Rooms available Today</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Room Nr
+                        </th>
+
+                        <th>
+                            for smokers
+                        </th>
+                        <th>
+                            room type
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr *ngFor="let room of rooms">
+                            <td>
+                               {{room.roomID}}
+                            </td>
+                               {{room.smoke}}
+                            <td>
+                                {{room.nubmerbeds}}
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                <a asp-action="SelectRoom" asp-route-id="@item.RoomID">Select</a>
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
