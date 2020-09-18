@@ -40,6 +40,9 @@
                         <td>
                             {{reservation.guest.surname}}
                         </td>
+                        <td>
+                            <a class="Button">CheckIn</a>
+                        </td>
                       
                     </tr>
                     
@@ -73,12 +76,11 @@
                             <td>
                                 {{room.nubmerbeds}}
                             </td>
+                           
                             <td>
-                                
+                                <a class="Button">CheckIn</a>
                             </td>
-                            <td>
-                                <a asp-action="SelectRoom" asp-route-id="@item.RoomID">Select</a>
-                            </td>
+                            
                         </tr>
                     
                 </tbody>
