@@ -13,9 +13,10 @@ export class CheckinComponent implements OnInit {
 
   public reservations: Reservation[];
   public rooms: Room[];
+  public roomadd: Boolean;
 
   constructor(private httpService: HttpService) {
-
+    this.roomadd = false;
   }
 
   public getReservations = () => {
@@ -23,13 +24,13 @@ export class CheckinComponent implements OnInit {
     this.httpService.getData(route)
       .subscribe((result) => {
         this.reservations = result as Reservation[];
-       
+
       },
         (error) => {
           console.error(error);
         });
-    
-    
+
+
   }
 
   public getRooms = () => {
@@ -37,13 +38,18 @@ export class CheckinComponent implements OnInit {
     this.httpService.getData(route)
       .subscribe((result) => {
         this.rooms = result as Room[];
-        
+
       },
         (error) => {
           console.error(error);
         });
   }
 
+  public addReservationToRoom=()=>{
+    this.roomadd=true;
+    console.log("check")
+    console.log(this.roomadd);
+  }
   ngOnInit(): void {
     this.getReservations();
     this.getRooms();
