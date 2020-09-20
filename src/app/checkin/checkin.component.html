@@ -41,7 +41,7 @@
                             {{reservation.guest.surname}}
                         </td>
                         <td>
-                            <a class="Button" (click)="addReservationToRoom(i)">CheckIn</a>
+                            <a class="Button" >CheckIn</a>
                         </td>
                       
                     </tr>
@@ -78,7 +78,7 @@
                             </td>
                            
                             <td>
-                                <a class="Button">CheckIn</a>
+                                <a class="Button" (click)="addReservationToRoom(room.roomID)">CheckIn</a>
                             </td>
                             
                         </tr>
@@ -96,7 +96,7 @@
                     <form asp-controller="Checkin" asp-action="CheckinRoomAdd" autocomplete="off">
                         <label for="exampleFormControlSelect1">Room Nr</label>
                         <select class="form-control" name="id" id="exampleFormControlSelect1">
-                            <option value=@ViewBag.RoomId>@ViewBag.RoomNr</option>
+                            <option value=@ViewBag.RoomId>{{roomnumberselected}}</option>
 
 
                         </select>

@@ -14,6 +14,7 @@ export class CheckinComponent implements OnInit {
   public reservations: Reservation[];
   public rooms: Room[];
   public roomadd: Boolean;
+  public roomnumberselected: number;
 
   constructor(private httpService: HttpService) {
     this.roomadd = false;
@@ -45,11 +46,12 @@ export class CheckinComponent implements OnInit {
         });
   }
 
-  public addReservationToRoom=()=>{
+  public addReservationToRoom=(roomnumber: number)=>{
     this.roomadd=true;
-    console.log("check")
-    console.log(this.roomadd);
+    console.log(roomnumber);
+    this.roomnumberselected=roomnumber;
   }
+
   ngOnInit(): void {
     this.getReservations();
     this.getRooms();
