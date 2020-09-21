@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Room } from '../models/room.model'
-import { Reservation } from '../models/reservation.model'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Room } from '../models/room.model';
+import { Reservation } from '../models/reservation.model';
 import { HttpService } from '../http.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-checkin',
@@ -50,6 +51,14 @@ export class CheckinComponent implements OnInit {
     this.roomadd=true;
     console.log(roomnumber);
     this.roomnumberselected=roomnumber;
+  }
+
+  @ViewChild('f', { static: false }) carForm: NgForm;
+
+  onSubmit(form: NgForm) 
+  {
+    console.log(form.value.name);
+    console.log(form.value.surname)
   }
 
   ngOnInit(): void {

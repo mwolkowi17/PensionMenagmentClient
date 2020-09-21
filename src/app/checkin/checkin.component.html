@@ -93,9 +93,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Chec-In Room</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Check-In Form</h6>
-                    <form asp-controller="Checkin" asp-action="CheckinRoomAdd" autocomplete="off">
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
                         <label for="exampleFormControlSelect1">Room Nr</label>
-                        <select class="form-control" name="id" id="exampleFormControlSelect1">
+                        <select class="form-control" name="id" ngModel id="exampleFormControlSelect1">
                             <option value=@ViewBag.RoomId>{{roomnumberselected}}</option>
 
 
@@ -103,26 +103,26 @@
 
                         <div class="form-group">
                             <label for="nameInput">Name</label>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" name="name" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="nameInput">Surname</label>
-                            <input type="text" class="form-control" name="surname">
+                            <input type="text" class="form-control" name="surname" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="nameInput">DepartureDate</label>
-                            <input type="text" class="form-control" name="departureDate">
+                            <input type="text" class="form-control" name="departureDate" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Breakfest</label>
-                            <select class="form-control" name="breakfestincluded" id="exampleFormControlSelect1">
+                            <select class="form-control" name="breakfestincluded"  ngModel id="exampleFormControlSelect1">
                                 <option value="false">no breakfest</option>
                                 <option value="true">with breakfest</option>
 
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <div class="text-danger">@ViewBag.NoFreeRooms @ViewBag.ValidationText</div>
+                        <!--<div class="text-danger">@ViewBag.NoFreeRooms @ViewBag.ValidationText</div>-->
                     </form>
                 </div>
             </div>
