@@ -61,6 +61,7 @@ public addReservationToRoomFinal =(id:number,name:string,surname:string,departur
   .subscribe((result) => {
     this.newreservationRoom = result as Room;
     this.getReservations();
+    this.getRooms();
   },
     (error) => {
       console.error(error);

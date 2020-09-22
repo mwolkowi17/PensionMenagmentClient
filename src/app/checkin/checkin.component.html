@@ -94,12 +94,13 @@
                     <h5 class="card-title">Chec-In Room</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Check-In Form</h6>
                     <form (ngSubmit)="onSubmit(f)" #f="ngForm" autocomplete="off">
-                        <label for="exampleFormControlSelect1">Room Nr</label>
-                        <select class="form-control" name="id" ngModel id="exampleFormControlSelect1">
+                        <label for="exampleFormControlSelect1">Room Nr:</label>
+                        <p>{{roomnumberselected}}</p>
+                        <!--<select class="form-control" name="id" ngModel id="exampleFormControlSelect1">
                             <option value=id>{{roomnumberselected}}</option>
 
 
-                        </select>
+                        </select>-->
 
                         <div class="form-group">
                             <label for="nameInput">Name</label>
