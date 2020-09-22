@@ -16,6 +16,7 @@ export class CheckinComponent implements OnInit {
   public rooms: Room[];
   public roomadd: Boolean;
   public roomnumberselected: number;
+  public newreservationRoom: Room;
 
   constructor(private httpService: HttpService) {
     this.roomadd = false;
@@ -53,12 +54,27 @@ export class CheckinComponent implements OnInit {
     this.roomnumberselected=roomnumber;
   }
 
+public addReservationToRoomFinal =(id:number,name:string,surname:string,departureDate:string,breakfestincluded:boolean)=>{
+  //do zmiany adress
+  let route: string= 'https://localhost:44343/api/Checkin/addcheckintoroom?id='+id+'&name='+name+'&surname='+surname+'&departureDate='+departureDate+'&breakfestincluded='+breakfestincluded;
+  this.httpService.getData(route)
+  .subscribe((result) => {
+    this.newreservationRoom = result as Room;
+    this.getReservations();
+  },
+    (error) => {
+      console.error(error);
+    });
+}
+
   @ViewChild('f', { static: false }) carForm: NgForm;
 
   onSubmit(form: NgForm) 
   {
     console.log(form.value.name);
-    console.log(form.value.surname)
+    console.log(form.value.surname);
+    this.addReservationToRoomFinal(this.roomnumberselected,form.value.name,form.value.surname,form.value.departureDate,form.value.breakfestincluded)
+    console.log("ready");
   }
 
   ngOnInit(): void {
