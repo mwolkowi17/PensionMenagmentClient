@@ -41,7 +41,7 @@
                             {{reservation.guest.surname}}
                         </td>
                         <td>
-                            <a class="Button" >CheckIn</a>
+                            <a class="Button" (click)="addCheckinFromReservation(reservation.reservationID)" >CheckIn</a>
                         </td>
                       
                     </tr>

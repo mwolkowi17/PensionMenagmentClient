@@ -48,33 +48,45 @@ export class CheckinComponent implements OnInit {
         });
   }
 
-  public addReservationToRoom=(roomnumber: number)=>{
-    this.roomadd=true;
+  public addReservationToRoom = (roomnumber: number) => {
+    this.roomadd = true;
     console.log(roomnumber);
-    this.roomnumberselected=roomnumber;
+    this.roomnumberselected = roomnumber;
   }
 
-public addReservationToRoomFinal =(id:number,name:string,surname:string,departureDate:string,breakfestincluded:boolean)=>{
-  //do zmiany adress
-  let route: string= 'https://localhost:44343/api/Checkin/addcheckintoroom?id='+id+'&name='+name+'&surname='+surname+'&departureDate='+departureDate+'&breakfestincluded='+breakfestincluded;
-  this.httpService.getData(route)
-  .subscribe((result) => {
-    this.newreservationRoom = result as Room;
-    this.getReservations();
-    this.getRooms();
-  },
-    (error) => {
-      console.error(error);
-    });
-}
+  public addReservationToRoomFinal = (id: number, name: string, surname: string, departureDate: string, breakfestincluded: boolean) => {
+    //do zmiany adress
+    let route: string = 'https://localhost:44343/api/Checkin/addcheckintoroom?id=' + id + '&name=' + name + '&surname=' + surname + '&departureDate=' + departureDate + '&breakfestincluded=' + breakfestincluded;
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.newreservationRoom = result as Room;
+        this.getReservations();
+        this.getRooms();
+      },
+        (error) => {
+          console.error(error);
+        });
+  }
+
+  public addCheckinFromReservation = (id: number)=>{
+    let route: string = 'https://localhost:44343/api/Checkin/checkinadd?id='+id;
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.newreservationRoom = result as Room;
+        this.getReservations();
+        this.getRooms();
+      },
+        (error) => {
+          console.error(error);
+        });
+  }
 
   @ViewChild('f', { static: false }) carForm: NgForm;
 
-  onSubmit(form: NgForm) 
-  {
+  onSubmit(form: NgForm) {
     console.log(form.value.name);
     console.log(form.value.surname);
-    this.addReservationToRoomFinal(this.roomnumberselected,form.value.name,form.value.surname,form.value.departureDate,form.value.breakfestincluded)
+    this.addReservationToRoomFinal(this.roomnumberselected, form.value.name, form.value.surname, form.value.departureDate, form.value.breakfestincluded)
     console.log("ready");
   }
 
