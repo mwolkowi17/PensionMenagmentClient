@@ -17,9 +17,11 @@ export class CheckinComponent implements OnInit {
   public roomadd: Boolean;
   public roomnumberselected: number;
   public newreservationRoom: Room;
+  public flagreservfortoday: boolean;
 
   constructor(private httpService: HttpService) {
     this.roomadd = false;
+    this.flagreservfortoday = true;
   }
 
   public getReservations = () => {
@@ -68,8 +70,8 @@ export class CheckinComponent implements OnInit {
         });
   }
 
-  public addCheckinFromReservation = (id: number)=>{
-    let route: string = 'https://localhost:44343/api/Checkin/checkinadd?id='+id;
+  public addCheckinFromReservation = (id: number) => {
+    let route: string = 'https://localhost:44343/api/Checkin/checkinadd?id=' + id;
     this.httpService.getData(route)
       .subscribe((result) => {
         this.newreservationRoom = result as Room;
@@ -79,6 +81,7 @@ export class CheckinComponent implements OnInit {
         (error) => {
           console.error(error);
         });
+    this.flagreservfortoday = false;
   }
 
   @ViewChild('f', { static: false }) carForm: NgForm;

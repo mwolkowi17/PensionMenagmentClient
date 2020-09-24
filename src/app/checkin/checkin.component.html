@@ -40,7 +40,7 @@
                         <td>
                             {{reservation.guest.surname}}
                         </td>
-                        <td>
+                        <td *ngIf="flagreservfortoday">
                             <a class="Button" (click)="addCheckinFromReservation(reservation.reservationID)" >CheckIn</a>
                         </td>
                       
