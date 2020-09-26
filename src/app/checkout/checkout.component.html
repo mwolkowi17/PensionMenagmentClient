@@ -1,1 +1,50 @@
 <p>checkout works!</p>
+<h1> CheckOut</h1>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Room Number
+            </th>
+
+            <th>
+                Occupied
+            </th>
+            <th>
+                for smokers
+            </th>
+            <th>
+                room type
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr *ngFor="let room of roomstodisplay">
+
+            <td>
+                {{room.number}}
+            </td>
+
+            <td>
+                {{room.is_ocuppied}}
+            </td>
+            <td>
+                {{room.smoke}}
+            </td>
+            <td>
+                {{room.nubmerbeds}}
+            </td>
+            <td>
+                <a class="Button">Checkout</a>
+            </td>
+            
+            
+        </tr>
+        
+    </tbody>
+
+</table>
+
