@@ -84,6 +84,10 @@ export class CheckinComponent implements OnInit {
     this.flagreservfortoday = false;
   }
 
+  public cancelCheckinFromRoom=()=>{
+    this.roomadd = false;
+  }
+
   @ViewChild('f', { static: false }) carForm: NgForm;
 
   onSubmit(form: NgForm) {
