@@ -29,6 +29,18 @@ export class CheckoutComponent implements OnInit {
 
   }
 
+  public checkoutroom=(id:number)=>{
+    let route: string = 'https://localhost:44343/api/Checkout/checkout?id='+id;
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.roomstodisplay = result as Room[];
+        this.getRoomstodisplay();
+      },
+        (error) => {
+          console.error(error);
+        });
+    
+  }
 
   ngOnInit(): void {
     this.getRoomstodisplay();
