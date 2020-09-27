@@ -17,7 +17,9 @@
             <th>
                 room type
             </th>
-           
+           <th>
+               guest
+           </th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +38,12 @@
             </td>
             <td>
                 {{room.nubmerbeds}}
+            </td>
+            <td>
+                {{room.guest.name}}
+            </td>
+            <td>
+                {{room.guest.surname}}
             </td>
             <td>
                 <a class="Button" (click)="checkoutroom(room.roomID)">Checkout</a>

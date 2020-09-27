@@ -1,3 +1,5 @@
+import { Guest } from './guest.model';
+
 export interface Room{
     
        
@@ -10,6 +12,9 @@ export interface Room{
         Nubmerbeds : RoomType
         Is_cleaned: boolean
         Price: number
+        Guest: Guest
+        GuestSurnama: string
+
         
 }
 enum RoomType
