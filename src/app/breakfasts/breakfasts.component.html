@@ -1,1 +1,63 @@
-<p>breakfasts works!</p>
+<h1>Breakfasts list</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table  class="table">
+                <thead>
+                    <tr>
+
+
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            check in
+                        </th>
+                        <th>
+                            check out
+                        </th>
+                        <th>
+                            guest
+                        </th>
+
+                       
+                        <!--<th>
+                     Breakfest
+                    </th>-->
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr *ngFor="let room of breakfastlist">
+                        <td>
+                            {{room.number}}
+                        </td>
+            
+                        <td>
+                            {{room.is_ocuppied}}
+                        </td>
+                        <td>
+                            {{room.smoke}}
+                        </td>
+                        <td>
+                            {{room.nubmerbeds}}
+                        </td>
+                        <td>
+                            {{room.guest.name}}
+                        </td>
+                        <td>
+                            {{room.guest.surname}}
+                        </td>
+                        
+                        
+
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

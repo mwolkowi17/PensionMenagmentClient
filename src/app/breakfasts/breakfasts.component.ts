@@ -14,7 +14,8 @@ export class BreakfastsComponent implements OnInit {
   public reservations: Reservation[];
   public guests: Guest[];
   public rooms: Room[];
-  public breakfastlist: Reservation[];
+  public breakfastlist: Room[];
+  public roomstodisplay: Room[];
 
   constructor(private httpService: HttpService) {
     this.breakfastlist=new Array;
@@ -32,6 +33,21 @@ export class BreakfastsComponent implements OnInit {
         (error) => {
           console.error(error);
         });
+
+  }
+
+  public getRoomstodisplay = () => {
+    let route: string = 'https://localhost:44343/api/Checkout';
+    this.httpService.getData(route)
+      .subscribe((result) => {
+        this.roomstodisplay = result as Room[];
+        this.getBreakfasts();
+      },
+        (error) => {
+          console.error(error);
+        });
+
+
 
   }
 
@@ -58,12 +74,12 @@ export class BreakfastsComponent implements OnInit {
 
   public getBreakfasts = () => {
     let n: number;
-    for (n = 0; n < this.reservations.length; n++) {
+    for (n = 0; n < this.roomstodisplay.length; n++) {
       //console.log(this.reservations[n].breakfestIncluded)
-      if (this.reservations[n].breakfestIncluded === true) {
+      if (this.roomstodisplay[n].is_ocuppied=== true/*&&this.reservations[n].Room.Is_ocuppied===true*/) {
        
         
-        this.breakfastlist.push(this.reservations[n]);
+        this.breakfastlist.push(this.roomstodisplay[n]);
       }
      
     }
@@ -71,7 +87,8 @@ export class BreakfastsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getReservations();
+    //this.getReservations();
+    this.getRoomstodisplay();
     this.getGuests();
     this.getRooms();
 
