@@ -7,4 +7,5 @@ export interface Reservation{
     Check_out: string;
     Guest: Guest;
     Room: Room;
+    breakfestIncluded :Boolean;
 }
